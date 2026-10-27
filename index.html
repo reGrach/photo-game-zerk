@@ -1,0 +1,378 @@
+<!doctype html>
+<html lang="ru">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+    <meta name="theme-color" content="#123247">
+    <title>Бегущий Зеркальный</title>
+    <style>
+        :root {
+            color-scheme: light;
+            --ink: #123247;
+            --muted: #506b78;
+            --paper: #eef7fa;
+            --card: #fff;
+            --green: #16745f;
+            --mint: #b8f0d0;
+            --line: #d5e8ec;
+            --sky: #e0f4fc
+        }
+
+        * {
+            box-sizing: border-box
+        }
+
+        html {
+            background: var(--paper)
+        }
+
+        body {
+            margin: 0;
+            color: var(--ink);
+            font: 16px/1.48 -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
+            -webkit-font-smoothing: antialiased
+        }
+
+        main {
+            width: 100%;
+            max-width: 620px;
+            margin: 0 auto;
+            padding: 0 16px 36px
+        }
+
+        .hero {
+            margin: 0 -16px 18px;
+            padding: 28px 20px 24px;
+            background: linear-gradient(145deg, #123247 0%, #17647b 58%, #16836d 100%);
+            color: #fff;
+            border-radius: 0 0 26px 26px
+        }
+
+        .eyebrow {
+            display: inline-block;
+            color: var(--mint);
+            font-size: 12px;
+            font-weight: 800;
+            letter-spacing: .12em;
+            text-transform: uppercase;
+            margin-bottom: 10px
+        }
+
+        h1 {
+            font-size: clamp(32px, 9vw, 46px);
+            line-height: 1.02;
+            margin: 0 0 12px;
+            letter-spacing: -.04em
+        }
+
+        .intro {
+            margin: 0;
+            max-width: 420px;
+            color: #e2eae4;
+            font-size: 16px
+        }
+
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 8px;
+            margin-top: 22px
+        }
+
+        .stat {
+            background: rgba(225, 248, 255, .12);
+            border: 1px solid rgba(225, 248, 255, .2);
+            border-radius: 14px;
+            padding: 11px 10px
+        }
+
+        .stat strong {
+            display: block;
+            color: var(--mint);
+            font-size: 21px;
+            line-height: 1.1
+        }
+
+        .stat span {
+            display: block;
+            color: #e2eae4;
+            font-size: 11px;
+            margin-top: 5px
+        }
+
+        .card {
+            background: var(--card);
+            border: 1px solid var(--line);
+            border-radius: 18px;
+            padding: 17px;
+            margin: 12px 0
+        }
+
+        h2 {
+            font-size: 20px;
+            line-height: 1.2;
+            margin: 0 0 12px;
+            letter-spacing: -.02em
+        }
+
+        p {
+            margin: 8px 0
+        }
+
+        ul,
+        ol {
+            margin: 8px 0 0;
+            padding-left: 22px
+        }
+
+        li {
+            padding-left: 3px;
+            margin: 7px 0
+        }
+
+        .steps {
+            list-style: none;
+            padding: 0;
+            counter-reset: step
+        }
+
+        .steps li {
+            counter-increment: step;
+            display: grid;
+            grid-template-columns: 32px 1fr;
+            gap: 10px;
+            margin: 13px 0;
+            padding: 0
+        }
+
+        .steps li:before {
+            content: counter(step);
+            display: grid;
+            place-items: center;
+            width: 30px;
+            height: 30px;
+            background: var(--mint);
+            color: var(--ink);
+            border-radius: 10px;
+            font-weight: 900
+        }
+
+        .callout {
+            background: #e0f5e9;
+            border: 1px solid #c4e9d4;
+            border-radius: 14px;
+            padding: 13px 14px;
+            margin-top: 12px
+        }
+
+        .blue-callout {
+            background: var(--sky);
+            border-color: #c4e7f5
+        }
+
+        .warning {
+            background: #fff0df;
+            border-color: #f4d6b5
+        }
+
+        .pill {
+            display: inline-block;
+            font-size: 12px;
+            font-weight: 800;
+            border-radius: 99px;
+            padding: 4px 9px;
+            background: #dff3fb;
+            color: #165a77;
+            margin: 0 5px 5px 0
+        }
+
+        .division {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 7px;
+            margin-top: 8px
+        }
+
+        .division span {
+            padding: 7px 10px;
+            border: 1px solid var(--line);
+            border-radius: 10px;
+            background: #f1fbfd;
+            font-weight: 700;
+            font-size: 14px
+        }
+
+        .formula {
+            background: linear-gradient(135deg, #123247, #176b77);
+            color: white;
+            padding: 14px;
+            border-radius: 14px;
+            font-weight: 750;
+            text-align: center;
+            margin-top: 12px
+        }
+
+        .formula small {
+            display: block;
+            color: #dce8dd;
+            font-weight: 500;
+            margin-top: 5px;
+            font-size: 12px
+        }
+
+        .muted {
+            color: var(--muted);
+            font-size: 13px
+        }
+
+        footer {
+            padding: 18px 4px 0;
+            text-align: center;
+            color: var(--muted);
+            font-size: 12px
+        }
+    </style>
+</head>
+
+<body>
+    <main>
+        <header class="hero">
+            <div class="eyebrow">Найди. Придумай. Сними!</div>
+            <h1>Бегущий Зеркальный</h1>
+            <p class="intro">Игра на мозг, скорость и фантазию. Ищите детали лагеря по фотографиям-загадкам и
+                превращайте находки в творческие кадры.</p>
+            <div class="stats">
+                <div class="stat"><strong>10</strong><span>фото-загадок</span></div>
+                <div class="stat"><strong>60 мин</strong><span>контрольное время</span></div>
+                <div class="stat"><strong>4–6</strong><span>человек в команде</span></div>
+            </div>
+        </header>
+
+        <section class="card">
+            <h2>📍 Где и когда всё начинается и заканчивается</h2>
+            <p><span class="pill">Регистрация</span>Кабинет тихих игр перед ТВС</p>
+            <p><span class="pill">Старт</span>Наш корпус, 17:30 (после ККЗ)</p>
+            <p><span class="pill">Финиш</span>Наш корпус</p>
+            <p>На регистрации команда получает NFC-метку. С помощью метки фиксируется стартовое и финишное время.
+                Команды стартуют
+                по очереди, с ориентировочным интервалом 3–4 минуты. Перед непосредственным стартом будет выдаваться
+                ссылка на облачное хранилище с фото-загадками.</p>
+            <p>Время прохождения фиксируется по отметкам старта и финиша.</p>
+            <div class="callout"><strong>Важно:</strong> не теряйте и не передавайте NFC-метку другой команде. Если
+                метка потеряна, обязательно сообщите об этом судье на финише — он вручную зафиксирует финишное время.
+            </div>
+        </section>
+
+        <section class="card">
+            <h2>🧭 Как играть</h2>
+            <ol class="steps">
+                <li>
+                    <div><strong>Соберите команду и зарегистрируйтесь.</strong><br>В команде должно быть от 4 до 6
+                        участников. При регистрации укажите: планируете вы бежать на скорость. Это определит вашу
+                        очередность на старте.</div>
+                </li>
+                <li>
+                    <div><strong>На старте получите фото-загадки.</strong><br>Откройте выданную ссылку на облачное
+                        хранилище с 10 фотографиями. На них изображены предметы или детали конкретных мест лагеря.</div>
+                </li>
+                <li>
+                    <div><strong>Ищите объекты.</strong><br>Команда сама выбирает порядок поиска. Ищите именно тот
+                        объект или деталь, которые показаны на исходной фотографии.</div>
+                </li>
+                <li>
+                    <div><strong>Сделайте творческий кадр.</strong><br>Найдите объект и придумайте интересную
+                        композицию: используйте ракурс, позы, перспективу или сюжет. Сам объект-загадка должен быть
+                        различим в кадре.</div>
+                </li>
+                <li>
+                    <div><strong>Доберитесь до финиша.</strong><br>У нашего корпуса отметьтесь своей NFC-меткой и
+                        передайте фотографии судье удобным электронным способом.</div>
+                </li>
+            </ol>
+        </section>
+
+        <section class="card">
+            <h2>📸 Требования к фотографиям</h2>
+            <ul>
+                <li>На каждый объект-загадку сделайте отдельную фотографию.</li>
+                <li>В кадре должны быть <strong>все участники команды</strong>, а также узнаваемый объект с исходной
+                    загадки. Если хотя бы одного участника нет в кадре, фотография не засчитывается.</li>
+                <li>Фотография должна быть сделана во время игры.</li>
+                <li>После финиша передайте все фотографии судье в согласованном и удобном электронном формате.</li>
+            </ul>
+            <div class="callout blue-callout"><strong>Совет:</strong> прежде чем уходить от найденного объекта,
+                проверьте, что все участники попали в кадр, фотография сохранилась и на ней действительно видно нужную
+                деталь.</div>
+        </section>
+
+        <section class="card">
+            <h2>⏱️ Как определяется результат</h2>
+            <p>Результат команды определяется по итоговому времени прохождения дистанции.</p>
+            <p>Контрольное время — <strong>60 минут на команду</strong>. Команды, которые финишировали позже 60 минут
+                после своего старта, выбывают из общего зачёта.</p>
+            <p>За каждую неразгаданную фото-загадку начисляется штраф <strong>+5 минут</strong>.</p>
+            <p>Пять независимых экспертов могут отдать по одному творческому баллу пяти разным командам. Один судья
+                не может выдать одной команде больше одного балла.</p>
+            <p>Каждый творческий балл даёт<strong> −1 минуту.</strong> Одна команда может получить максимум 5 баллов и,
+                соответственно, максимум 5 минут бонуса.</p>
+            <div class="formula">Итоговое время = время прохождения + штрафы − бонус
+                <small>Бонус за творчество: 1 балл = 1 минута. Максимум — 5 минут.</small>
+            </div>
+            <div class="callout warning"><strong>Жёсткий лимит:</strong> если команда финиширует позже 60 минут после
+                своего старта, она выбывает из общего зачёта — независимо от штрафов и творческих баллов.</div>
+            <p class="muted">Результаты рассчитываются только для команд, успевших финишировать в пределах контрольного
+                времени. При сравнении команд учитывается время от индивидуального старта до финиша, а не время на часах
+                в момент финиша.</p>
+        </section>
+
+        <section class="card">
+            <h2>🏆 Дивизионы</h2>
+            <p>Команды соревнуются отдельно в трёх дивизионах:</p>
+            <div class="division"><span>Мальчишки</span><span>Девчонки</span><span>Смешанные составы</span></div>
+        </section>
+
+        <section class="card">
+            <h2>🛟 Безопасность и честная игра</h2>
+            <p>Все объекты находятся на территории лагеря на открытом воздухе. Для поиска и съёмки не нужно заходить в
+                здания или наступать на газоны.</p>
+            <ul>
+                <li>Передвигайтесь всей командой. Не разделяйтесь ради ускорения поиска.</li>
+                <li>Не залезайте на крыши, деревья, ограждения и другие конструкции. Не подвергайте себя риску ради
+                    кадра.</li>
+            </ul>
+            <div class="callout warning"><strong>Главное правило:</strong> безопасность и честная игра важнее
+                результата. За несоблюдение правил команда может получить предупреждение или быть снята с игры.</div>
+        </section>
+
+        <section class="card">
+            <h2>📞 Связь с организаторами</h2>
+            <p>Если возник вопрос или нужна помощь во время игры, свяжитесь с организаторами:</p>
+
+            <ul class="contacts">
+                <li>
+                    <strong>Анна Юрьевна</strong> —
+                    <a href="tel:+79117920624">+7 (911) 792-06-24</a>
+                </li>
+                <li>
+                    <strong>Герман Александрович</strong> —
+                    <a href="tel:+79217717588">+7 (921) 771-75-88</a>
+                </li>
+            </ul>
+        </section>
+
+        <section class="card">
+            <h2>✅ Перед стартом проверьте</h2>
+            <ul>
+                <li>Телефон заряжен, камера работает.</li>
+                <li>Выданная ссылка открывается, все 10 загадок видны.</li>
+                <li>Команда знает место финиша — у нашего корпуса.</li>
+                <li>Каждый участник знает: старт и финиш фиксируются NFC-меткой.</li>
+            </ul>
+            <p><strong>Удачи! Ищите внимательно, снимайте креативно и играйте честно.</strong></p>
+        </section>
+        <footer>Бегущий Зеркальный • Следуйте инструкциям организаторов и берегите себя и команду</footer>
+    </main>
+</body>
+
+</html>
